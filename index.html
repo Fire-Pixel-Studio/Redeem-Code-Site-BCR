@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Redeem Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #redeemCode {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #uidInput {
+            padding: 10px;
+            font-size: 18px;
+            width: 250px;
+            margin-top: 10px;
+        }
+
+        #getCodeButton {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Block Hill Racing</h2>
+    <h1>Get Your Redeem Code</h1>
+    <input type="text" id="uidInput" placeholder="Enter your one-time UID" />
+    <button id="getCodeButton">Get Redeem Code</button>
+
+    <div id="redeemCode"></div>
+
+    <script>
+        const digitToLetter = {
+            0: "J", 1: "A", 2: "B", 3: "C", 4: "D",
+            5: "E", 6: "F", 7: "G", 8: "H", 9: "I"
+        };
+
+        const letterToNumber = {
+            "A": 1, "B": 2, "C": 3, "D": 4, "E": 5,
+            "F": 6, "G": 7, "H": 8, "I": 9, "J": 0
+        };
+
+        function generateRedeemCode(uid) {
+            if (uid.length !== 5) {
+                return "Invalid UID";
+            }
+
+            // Reverse the UID
+            let reversed = uid.split("").reverse().join("");
+
+            // Convert digits to letters
+            let letters = [];
+            for (let i = 0; i < reversed.length; i++) {
+                letters.push(digitToLetter[parseInt(reversed[i])]);
+            }
+
+            // Rearranged pattern BFEIC
+            let reordered = [
+                letters[0],  // 1st
+                letters[4],  // 5th
+                letters[1],  // 2nd
+                letters[3],  // 4th
+                letters[2],  // 3rd
+            ];
+
+            // Add numbers after 1st, 3rd, and 5th letters
+            let code = reordered[0] + letterToNumber[reordered[0]] + 
+                       reordered[1] + 
+                       reordered[2] + letterToNumber[reordered[2]] + 
+                       reordered[3] + 
+                       reordered[4] + letterToNumber[reordered[4]];
+
+            return code;
+        }
+
+        document.getElementById("getCodeButton").addEventListener("click", function() {
+            let uid = document.getElementById("uidInput").value;
+            let redeemCode = generateRedeemCode(uid);
+            document.getElementById("redeemCode").textContent = "Redeem Code: " + redeemCode;
+        });
+    </script>
+
+</body>
+</html>
