@@ -1,0 +1,85 @@
+/* Import Minecraft Font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Style the page */
+body {
+    font-family: 'Press Start 2P', cursive, sans-serif; /* Use Minecraft-like font */
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* Center the content */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* Style the heading (Game Name) */
+h1 {
+    color: #333;
+    font-size: 3em;  /* Make game name larger */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Style the input field */
+input[type="text"] {
+    padding: 10px;
+    font-size: 1.2em;
+    width: 80%;
+    margin: 20px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Style the button */
+button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Style the redeem code output */
+.redeem-code {
+    margin-top: 20px;
+    font-size: 1.5em;
+    color: #4CAF50;
+}
+
+/* Game name specifically */
+.game-name {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: 'Press Start 2P', cursive, sans-serif;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        font-size: 1em;
+    }
+
+    button {
+        width: 100%;
+    }
+}
